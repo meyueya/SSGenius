@@ -1,0 +1,77 @@
+  .ranges li.active {
+    background-color: #6bd098;
+    border: 1px solid #6bd098;
+    color: #fff;
+}
+
+.ranges li:hover {
+    background-color: #6bd098;
+    border: 1px solid #6bd098;
+    color: #fff;
+}
+
+/*.btn-success {
+    background-color: #ef8157;
+    color: #fff;
+}
+*/
+.ranges li {
+
+    color: #000000;
+  }
+
+ 
+
+.daterangepicker td.active, .daterangepicker td.active:hover {
+    background-color: #6bd098;
+
+  }
+
+  .sidebar[data-active-color=danger] .nav li.active>a, .sidebar[data-active-color=danger] .nav li.active>a i { 
+    color: #6bd098 !important;
+    opacity: 1;
+}
+.off-canvas-sidebar .logo a.logo-mini, .sidebar .logo a.logo-mini {
+    opacity: 1;
+  }
+
+  tbody {
+    font-size: 12px;
+  }
+  
+  .btn{
+    max-width: 100% !important;
+    border-width: 1px;
+    font-weight: 500;
+    font-size: 8px;
+  
+   
+    margin: 16px 1px;
+  }
+  
+  .btn-default {
+      background-color: #6bd098;
+  }
+  
+.pagination .page-item.active>.page-link, .pagination .page-item.active>.page-link:focus, .pagination .page-item.active>.page-link:hover {
+    background-color: #6bd098 !important;
+    border-color: #6bd098 !important;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #6bd098;
+    color: #fff;
+}
+#dvLoading
+            {
+               background:#000 url(http://www.vippskorea.com/theme/freelancerx/skin/board/VIPvirtual_tour/img/loading.gif) no-repeat center center;
+               background-color: transparent;
+               height: 200px;
+               width: 200px;
+               position: fixed;
+               z-index: 10000;
+               left: 50%;
+               top: 49%;
+               margin: -25px 0 0 -25px;
+            }

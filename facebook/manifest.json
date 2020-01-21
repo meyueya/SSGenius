@@ -1,0 +1,48 @@
+{
+  "name": "SSGENIUS",
+  "short_name": "SSG",
+  "icons": [
+      {
+        "src": "https://ssgenius.com/wp-content/uploads/2018/11/favicon.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      }, 
+
+      {
+        "src": "https://ssgenius.com/wp-content/uploads/2018/11/favicon.png",
+        "type": "image/png",
+        "sizes": "64x64"
+      }, 
+
+      {
+        "src": "https://ssgenius.com/wp-content/uploads/2018/11/favicon.png",
+        "type": "image/png",
+        "sizes": "72x72"
+      }, 
+      {
+        "src": "https://ssgenius.com/wp-content/uploads/2018/11/favicon.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      }, 
+      {
+        "src": "https://ssgenius.com/wp-content/uploads/2018/11/favicon.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      }, 
+      {
+        "src": "https://ssgenius.com/wp-content/uploads/2018/11/favicon.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }, 
+      {
+        "src": "https://ssgenius.com/wp-content/uploads/2018/11/favicon.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      } 
+      ],
+  "start_url": "/?homescreen=1",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F4F3EF",
+  "theme_color": "#F4F3EF"
+}

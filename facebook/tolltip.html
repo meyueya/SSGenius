@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Example of bootstrap tooltip on top</title>
+    <!--  <link rel="stylesheet" href="../assets/css/bootstrap.min.css"> 
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>-->
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#toptip").tooltip({
+            placement:"top"
+        });
+
+        $("#bottomtip").tooltip({
+            placement:"bottom"
+        });
+
+        $("#lefttip").tooltip({
+            placement:"left"
+        });
+
+        $("#righttip").tooltip({
+            placement:"right"
+        });                
+    });
+    </script>
+
+</head>
+<body>
+<div class="container">
+<h1>Bootstrap Tooltip Demo</h1><br /><br />
+<div>
+
+<button type="button" id="toptip" class="btn btn-danger"  title="A Tooltip with Top placement">Top Tooltip demo</button>
+<button type="button" id="bottomtip" class="btn btn-info"  title="A Tooltip with Bottom placement">Bottom Tooltip demo</button>
+<button type="button" id="lefttip" class="btn btn-success"  title="A Tooltip with Left placement">Left Tooltip demo</button>
+<button type="button" id="righttip" class="btn btn-default"  title="A Tooltip with Right placement">Right Tooltip demo</button>
+</div>
+
+</body>
+</html>

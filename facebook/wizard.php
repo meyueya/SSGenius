@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+  
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/iconcool.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Reporte Producto
+  </title>
+   <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.min790f.css?v=2.0.1" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+       <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+       <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+       <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+       <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+       <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" />
+       <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.css" rel="stylesheet" />
+       <link href="./dist/css/mod.css" rel="stylesheet" />
+
+<style type="text/css">
+.daterangepicker.ltr .calendar{
+    display: none !important;
+}
+
+.range_inputs{
+    display: none !important;
+}
+</style>
+
+<style type="text/css">
+
+
+
+
+._mB {
+  background-color: #efc439;
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  padding: 0 2px;
+  line-height: 14px;
+  vertical-align: baseline;
+}
+
+._mB_green {
+  background-color: #59946B;
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  padding: 0 2px;
+  line-height: 14px;
+  vertical-align: baseline;
+}
+
+
+a.headline {
+  color:#1a0dab;
+}
+
+a.headline {
+  font-size:18px;
+  font-weight: normal;
+}
+
+a.headline:hover {
+  color:#1a0dab;
+}
+
+
+div.urlline {
+  margin-top:-4px;
+  margin-bottom:0px;
+}
+
+span.displayurl {
+  color:#006621;
+  font-size:14px;
+  margin-left:2px;
+}
+
+span.callextension {
+  color: #545454;
+  font-size: small;
+  margin-left: 8px;
+}
+
+span.description {
+  font-size:small;
+  color:#545454;
+
+}
+.preview{
+      margin-bottom: 12px;
+}
+.preview:before{
+      content: attr(data-id)" - ";
+      position: absolute;
+      font-size: 19px;
+      left: 17px;
+      color: #868383;
+      }
+ .card-text{
+   text-align: center;
+ }   
+
+ p {
+    margin-top: 0;
+     margin-bottom: 5px; 
+    
+}  
+
+.card {
+    margin-top: 5px;
+    border: 1px solid #ccc;
+}
+
+
+.card label {
+    font-size: .7142em;
+    /* margin-bottom: 5px; */
+    color: #807b7b;
+}
+
+/*img.imgface  {
+    border-radius: 10px !important;
+    width: 81px !important;
+}
+
+.cont{
+  font-size: 16px;
+}*/
+</style>
+</head>
+
+<body class="">
+  <!-- Extra details for Live View on GitHub Pages -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="wrapper ">
+    <div class="sidebar" data-color="brown" data-active-color="danger">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="http://www.creative-tim.com/" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="../../assets/img/logo-small.png">
+          </div>
+        </a>
+        <a href="http://www.creative-tim.com/" class="simple-text logo-normal">
+          Creative Tim
+          <!-- <div class="logo-image-big">
+            <img src="../../assets/img/logo-big.png">
+          </div> -->
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <div class="user">
+          <div class="photo">
+            <img src="../../assets/img/faces/ayo-ogunseinde-2.jpg" />
+          </div>
+          <div class="info">
+            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+              <span>
+                Chet Faker
+                <b class="caret"></b>
+              </span>
+            </a>
+            <div class="clearfix"></div>
+            <div class="collapse" id="collapseExample">
+              <ul class="nav">
+                <li>
+                  <a href="#">
+                    <span class="sidebar-mini-icon">MP</span>
+                    <span class="sidebar-normal">My Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="sidebar-mini-icon">EP</span>
+                    <span class="sidebar-normal">Edit Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="sidebar-mini-icon">S</span>
+                    <span class="sidebar-normal">Settings</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <ul class="nav">
+          <li>
+            <a href="../dashboard.html">
+              <i class="nc-icon nc-bank"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="collapse" href="#pagesExamples">
+              <i class="nc-icon nc-book-bookmark"></i>
+              <p>
+                Pages
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse " id="pagesExamples">
+              <ul class="nav">
+                <li>
+                  <a href="../pages/timeline.html">
+                    <span class="sidebar-mini-icon">T</span>
+                    <span class="sidebar-normal"> Timeline </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/login.html">
+                    <span class="sidebar-mini-icon">L</span>
+                    <span class="sidebar-normal"> Login </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/register.html">
+                    <span class="sidebar-mini-icon">R</span>
+                    <span class="sidebar-normal"> Register </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/lock.html">
+                    <span class="sidebar-mini-icon">LS</span>
+                    <span class="sidebar-normal"> Lock Screen </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/user.html">
+                    <span class="sidebar-mini-icon">UP</span>
+                    <span class="sidebar-normal"> User Profile </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a data-toggle="collapse" href="#componentsExamples">
+              <i class="nc-icon nc-layout-11"></i>
+              <p>
+                Components
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse " id="componentsExamples">
+              <ul class="nav">
+                <li>
+                  <a href="../components/buttons.html">
+                    <span class="sidebar-mini-icon">B</span>
+                    <span class="sidebar-normal"> Buttons </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../components/grid.html">
+                    <span class="sidebar-mini-icon">G</span>
+                    <span class="sidebar-normal"> Grid System </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../components/panels.html">
+                    <span class="sidebar-mini-icon">P</span>
+                    <span class="sidebar-normal"> Panels </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../components/sweet-alert.html">
+                    <span class="sidebar-mini-icon">SA</span>
+                    <span class="sidebar-normal"> Sweet Alert </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../components/notifications.html">
+                    <span class="sidebar-mini-icon">N</span>
+                    <span class="sidebar-normal"> Notifications </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../components/icons.html">
+                    <span class="sidebar-mini-icon">I</span>
+                    <span class="sidebar-normal"> Icons </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../components/typography.html">
+                    <span class="sidebar-mini-icon">T</span>
+                    <span class="sidebar-normal"> Typography </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="active">
+            <a data-toggle="collapse" href="#formsExamples" aria-expanded="true">
+              <i class="nc-icon nc-ruler-pencil"></i>
+              <p>
+                Forms
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse  show " id="formsExamples">
+              <ul class="nav">
+                <li>
+                  <a href="regular.html">
+                    <span class="sidebar-mini-icon">RF</span>
+                    <span class="sidebar-normal"> Regular Forms </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="extended.html">
+                    <span class="sidebar-mini-icon">EF</span>
+                    <span class="sidebar-normal"> Extended Forms </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="validation.html">
+                    <span class="sidebar-mini-icon">V</span>
+                    <span class="sidebar-normal"> Validation Forms </span>
+                  </a>
+                </li>
+                <li class="active">
+                  <a href="wizard.html">
+                    <span class="sidebar-mini-icon">W</span>
+                    <span class="sidebar-normal"> Wizard </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a data-toggle="collapse" href="#tablesExamples">
+              <i class="nc-icon nc-single-copy-04"></i>
+              <p>
+                Tables
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse " id="tablesExamples">
+              <ul class="nav">
+                <li>
+                  <a href="../tables/regular.html">
+                    <span class="sidebar-mini-icon">RT</span>
+                    <span class="sidebar-normal"> Regular Tables </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../tables/extended.html">
+                    <span class="sidebar-mini-icon">ET</span>
+                    <span class="sidebar-normal"> Extended Tables </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../tables/datatables.net.html">
+                    <span class="sidebar-mini-icon">DT</span>
+                    <span class="sidebar-normal"> DataTables.net </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a data-toggle="collapse" href="#mapsExamples">
+              <i class="nc-icon nc-pin-3"></i>
+              <p>
+                Maps
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse " id="mapsExamples">
+              <ul class="nav">
+                <li>
+                  <a href="../maps/google.html">
+                    <span class="sidebar-mini-icon">GM</span>
+                    <span class="sidebar-normal"> Google Maps </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../maps/fullscreen.html">
+                    <span class="sidebar-mini-icon">FSM</span>
+                    <span class="sidebar-normal"> Full Screen Map </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="../maps/vector.html">
+                    <span class="sidebar-mini-icon">VM</span>
+                    <span class="sidebar-normal"> Vector Map </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="../widgets.html">
+              <i class="nc-icon nc-box"></i>
+              <p>Widgets</p>
+            </a>
+          </li>
+          <li>
+            <a href="../charts.html">
+              <i class="nc-icon nc-chart-bar-32"></i>
+              <p>Charts</p>
+            </a>
+          </li>
+          <li>
+            <a href="../calendar.html">
+              <i class="nc-icon nc-calendar-60"></i>
+              <p>Calendar</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-minimize">
+              <button id="minimizeSidebar" class="btn btn-icon btn-round">
+                <i class="nc-icon nc-minimal-right text-center visible-on-sidebar-mini"></i>
+                <i class="nc-icon nc-minimal-left text-center visible-on-sidebar-regular"></i>
+              </button>
+            </div>
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="#pablo">Paper Dashboard 2 PRO</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <form>
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="nc-icon nc-zoom-split"></i>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link btn-magnify" href="#pablo">
+                  <i class="nc-icon nc-layout-11"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item btn-rotate dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="nc-icon nc-bell-55"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn-rotate" href="#pablo">
+                  <i class="nc-icon nc-settings-gear-65"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <!-- <div class="panel-header panel-header-sm">
+  
+  
+</div> -->
+      <div class="content">
+        <div class="col-md-10 mr-auto ml-auto">
+          <!--      Wizard container        -->
+          <div class="wizard-container">
+            <div class="card card-wizard" data-color="primary" id="wizardProfile">
+              <form action="#" method="">
+                <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+                <div class="card-header text-center">
+                  <h3 class="card-title">
+                    Build Your Profile
+                  </h3>
+                  <h5 class="description">This information will let us know more about you.</h5>
+                  <div class="wizard-navigation">
+                    <ul>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#about" data-toggle="tab" role="tab" aria-controls="about" aria-selected="true">
+                          <i class="nc-icon nc-single-02"></i> About
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#account" data-toggle="tab" role="tab" aria-controls="account" aria-selected="true">
+                          <i class="nc-icon nc-touch-id"></i> Account
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#address" data-toggle="tab" role="tab" aria-controls="address" aria-selected="true">
+                          <i class="nc-icon nc-pin-3"></i> Address
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="about">
+                      <h5 class="info-text"> Let's start with the basic information (with validation)</h5>
+                      <div class="row justify-content-center">
+                        <div class="col-sm-4">
+                          <div class="picture-container">
+                            <div class="picture">
+                              <img src="../../assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="" />
+                              <input type="file" id="wizard-picture">
+                            </div>
+                            <h6 class="description">Choose Picture</h6>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="First Name (required)" name="firstname">
+                          </div>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                            </div>
+                            <input type="text" placeholder="Last Name (required)" class="form-control" name="lastname" />
+                          </div>
+                        </div>
+                        <div class="col-lg-10 mt-3">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                            </div>
+                            <input type="email" placeholder="Email (required)" class="form-control" name="email" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="account">
+                      <h5 class="info-text"> What are you doing? (checkboxes) </h5>
+                      <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <div class="choice" data-toggle="wizard-checkbox">
+                                <input type="checkbox" name="jobb" value="Design">
+                                <div class="icon">
+                                  <i class="nc-icon nc-ruler-pencil"></i>
+                                </div>
+                                <h6>Design</h6>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="choice" data-toggle="wizard-checkbox">
+                                <input type="checkbox" name="jobb" value="Code">
+                                <div class="icon">
+                                  <i class="nc-icon nc-laptop"></i>
+                                </div>
+                                <h6>Code</h6>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="choice" data-toggle="wizard-checkbox">
+                                <input type="checkbox" name="jobb" value="Develop">
+                                <div class="icon">
+                                  <i class="nc-icon nc-atom"></i>
+                                </div>
+                                <h6>Develop</h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="address">
+                      <div class="row justify-content-center">
+                        <div class="col-sm-12">
+                          <h5 class="info-text"> Are you living in a nice area? </h5>
+                        </div>
+                        <div class="col-sm-7">
+                          <div class="form-group">
+                            <label>Street Name</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-sm-3">
+                          <div class="form-group">
+                            <label>Street No.</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-sm-5">
+                          <div class="form-group">
+                            <label>City</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-sm-5">
+                          <div class="form-group select-wizard">
+                            <label>Country</label>
+                            <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Single Select">
+                              <option value="Afghanistan"> Afghanistan </option>
+                              <option value="Albania"> Albania </option>
+                              <option value="Algeria"> Algeria </option>
+                              <option value="American Samoa"> American Samoa </option>
+                              <option value="Andorra"> Andorra </option>
+                              <option value="Angola"> Angola </option>
+                              <option value="Anguilla"> Anguilla </option>
+                              <option value="Antarctica"> Antarctica </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="pull-right">
+                    <input type='button' class='btn btn-next btn-fill btn-rose btn-wd' name='next' value='Next' />
+                    <input type='button' class='btn btn-finish btn-fill btn-rose btn-wd' name='finish' value='Finish' />
+                  </div>
+                  <div class="pull-left">
+                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- wizard container -->
+        </div>
+      </div>
+      <footer class="footer footer-black  footer-white ">
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="footer-nav">
+              <ul>
+                <li>
+                  <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a>
+                </li>
+                <li>
+                  <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
+                </li>
+                <li>
+                  <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="credits ml-auto">
+              <span class="copyright">
+                ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-default active" data-color="brown"></span>
+              <span class="badge filter badge-light" data-color="white"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="header-title"> Sidebar Active Color</li>
+        <li class="adjustments-line text-center">
+          <a href="javascript:void(0)" class="switch-trigger active-color">
+            <span class="badge filter badge-primary" data-color="primary"></span>
+            <span class="badge filter badge-info" data-color="info"></span>
+            <span class="badge filter badge-success" data-color="success"></span>
+            <span class="badge filter badge-warning" data-color="warning"></span>
+            <span class="badge filter badge-danger active" data-color="danger"></span>
+          </a>
+        </li>
+        <li class="header-title">
+          Sidebar Mini
+        </li>
+        <li class="adjustments-line">
+          <div class="togglebutton switch-sidebar-mini">
+            <label class="switch-mini">
+              <input class="bootstrap-switch" type="checkbox" data-toggle="switch" data-on-color="info" data-off-color="info" data-on-label="ON" data-off-label="OFF">
+              <span class="toggle"></span>
+            </label>
+          </div>
+        </li>
+        <li class="button-container">
+          <a href="https://www.creative-tim.com/product/paper-dashboard-2-pro" target="_blank" class="btn btn-primary btn-block btn-round">Buy Now</a>
+          <a href="https://demos.creative-tim.com/paper-dashboard-2-pro/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
+            <i class="nc-icon nc-paper"></i> Documentation
+          </a>
+          <a href="https://www.creative-tim.com/product/paper-dashboard" target="_blank" class="btn btn-info btn-block btn-round">
+            <i class="nc-icon nc-laptop"></i> Get Free Demo!
+          </a>
+        </li>
+        <li class="header-title">Thank you for 95 shares!</li>
+        <li class="button-container text-center">
+          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
+          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+          <br>
+          <br>
+          <a class="github-button" href="https://github.com/creativetimofficial/paper-dashboard-pro" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+<!--   Core JS Files   -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="../assets/js/plugins/bootstrap-switch.js"></script>
+  <!--  Plugin for Sweet Alert -->
+  <script src="../assets/js/plugins/sweetalert2.min.js"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+  <script src="../assets/js/plugins/bootstrap-datetimepicker.js"></script>
+  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+  <!--  Plugin for the Bootstrap Table -->
+  <script src="../assets/js/plugins/nouislider.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Chart JS -->
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/paper-dashboard.min790f.js?v=2.0.1" type="text/javascript"></script>
+  <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../assets/demo/demo.js"></script>
+  <!-- Sharrre libray -->
+  <script src="../assets/demo/jquery.sharrre.js"></script>
+
+  <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+
+  
+ 
+
+ <script>
+    $(document).ready(function() {
+      // Initialise the wizard
+      demo.initWizard();
+      setTimeout(function() {
+        $('.card.card-wizard').addClass('active');
+      }, 600);
+    });
+  </script>
+</body>
+
+
+<!-- Mirrored from demos.creative-tim.com/paper-dashboard-2-pro/examples/forms/wizard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Aug 2018 16:06:50 GMT -->
+</html>

@@ -1,0 +1,519 @@
+<?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+// Include the required dependencies.
+require_once('../model/UserModel.php');
+require_once('../model/FacebookModel.php');
+$UserModel = new UserModel();
+$FacebookModel = new FacebookModel();
+$loader = include '/home/aiwroi/public_html/test/facebook-php-business-sdk/vendor/autoload.php';
+//use Facebook\Facebook;
+use FacebookAds\Api;
+use FacebookAds\Session;
+use FacebookAds\Logger\CurlLogger;
+use FacebookAds\Http\Request;
+use FacebookAds\Http\RequestInterface;
+use FacebookAds\Object\Page;
+
+require_once( '/home/aiwroi/public_html/test/php-sdk-5/vendor/autoload.php' );
+//$_SESSION = Array();
+if (isset($_SESSION['fb_access_token'])){
+$access_token = $_SESSION['fb_access_token'];
+}
+$appId         = '1930491627191257'; //Facebook App ID
+$appSecret     = '934f83f24436ea82749ca6b5fafc6281'; //Facebook App Secret
+$fb = new Facebook\Facebook([
+  'app_id'                => $appId,
+  'app_secret'            => $appSecret,
+  'default_graph_version' => 'v3.2',
+]);
+
+    $api = Api::init($appId, $appSecret, $access_token);
+    $api->setLogger(new CurlLogger());
+    $api = Api::instance();
+    //,adaccounts,businesses
+    
+     try{
+        $next = "";
+        $after = "";     
+        $arrayData = array();
+        $newResponse = array();
+        $context = stream_context_create(array(
+            "ssl"=>array(
+                "verify_peer"=>true,
+                "verify_peer_name"=>true,
+            )
+        ));
+        
+         $person = $fb->get('/me',$access_token)->getDecodedBody();
+         $id_facebook = $person['id'];
+         $cuentas = $fb->get('/me/adaccounts?fields=id,account_id,name,account_status,business&limit=25', $access_token)->getDecodedBody();
+         $arrayData = $cuentas['data'];
+    if (isset($cuentas['paging']['next'])){
+    $next = $cuentas['paging']['next'];
+          while($next != "") {
+                $response = json_decode(file_get_contents($next, null, $context),true);
+                $arrayData = array_merge($arrayData,$response['data']);
+                if (isset($response['paging']['next'])){
+                $next = $response['paging']['next'];
+                } else { $next = ""; }
+             }
+    } 
+
+    foreach ($arrayData as $key => $anuncio){
+        switch ($anuncio['account_status']) {
+            case "1":
+                $arrayData[$key]['status'] = "Activa";
+                break;
+             case "2":
+                $arrayData[$key]['status'] = "Deshabilitada";
+                break;
+             case "3":
+                $arrayData[$key]['status'] = "Inestable";
+                break;
+             case "7":
+                $arrayData[$key]['status'] = "Revisión de Riesgo Pendiente";
+                break;
+             case "8":
+                $arrayData[$key]['status'] = "Acuerdo Pendiente";
+                break;
+             case "9":
+                $arrayData[$key]['status'] = "En Periodo de Gracia";
+                break;
+             case "100":
+                $arrayData[$key]['status'] = "Cierre Pendiente";
+                break;
+             case "101":
+                $arrayData[$key]['status'] = "Cerrada";
+                break;
+             case "201":
+                $arrayData[$key]['status'] = "Cualquier Activo";
+                break;
+             case "202":
+                $arrayData[$key]['status'] = "Cualquier Cerrado";
+                break;
+        }
+         if (isset($anuncio['business']['id'])){
+          $arrayData[$key]['id_business'] = $anuncio['business']['id'];
+      } else { $arrayData[$key]['id_business'] = "";}
+      if (isset($anuncio['business']['name'])){
+          $arrayData[$key]['businessName'] = $anuncio['business']['name'];
+      } else { $arrayData[$key]['businessName'] = "--";}
+    }
+   /* echo "<pre>";
+   print_r($arrayData);
+    echo "</pre>";*/
+     }
+     catch (\Exception $e){
+        $return["message"] = $e->getMessage();
+         echo $return["message"]; 
+     }
+     catch(Facebook\Exceptions\FacebookThrottleException $e){
+        $return["message"] = $e->getMessage();
+         echo $return["message"]; 
+    }catch(Facebook\Exceptions\FacebookAuthorizationException $e){
+         $return["message"] = $e->getMessage();
+         echo $return["message"];
+    } ?>
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<meta name="msapplication-TileColor" content="#0061da">
+		<meta name="theme-color" content="#1643a3">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<link rel="icon" href="https://ssgenius.com/wp-content/uploads/2018/11/favicon.png" sizes="32x32" />
+        <link rel="icon" href="https://ssgenius.com/wp-content/uploads/2018/11/favicon.png" sizes="192x192" />
+        <link rel="apple-touch-icon-precomposed" href="https://ssgenius.com/wp-content/uploads/2018/11/favicon.png" />
+        <meta name="msapplication-TileImage" content="https://ssgenius.com/wp-content/uploads/2018/11/favicon.png" />
+		
+		<!-- Title -->
+		<title>SSG – Cuentas Publicitarias Facebook</title>
+		<link rel="stylesheet" href="../assets/fonts/fonts/font-awesome.min.css">
+		
+		<!-- Font Family -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+		
+		<!-- Dashboard Css -->
+		<link href="../assets/css/dashboard.css" rel="stylesheet" />
+		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+		<!-- c3.js Charts Plugin -->
+		<link href="../assets/plugins/charts-c3/c3-chart.css" rel="stylesheet" />
+		
+		<!-- Custom scroll bar css-->
+		<link href="../assets/plugins/scroll-bar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+		
+		<!---Font icons-->
+		<link href="../assets/plugins/iconfonts/plugin.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+	<style>
+	    .btn-primary-facebook {
+    color: #fff;
+    background-color: #3B5998;
+    border-color: #3B5998;
+}
+.btn-primary-facebook:hover {
+	color: #fff;
+	background-color: #3B5998;
+	border-color: #3B5998;
+}
+.btn-primary-facebook:focus, .btn-primary-facebook.focus {
+	box-shadow: 0 0 0 2px rgb(59,89,152,0.5);
+}
+.login-img2{ background-color:#EEEEEE; }
+.h-6b {
+     height: auto !important; 
+}
+.col-login2{ max-width:750px;}
+	</style>
+  </head>
+	<body class="login-img2">
+		<div id="global-loader" ></div>
+		<div class="page">
+			<div class="page-single">
+				<div class="container">
+					<div class="row">
+						<div class="col col-login2 mx-auto">
+							<div class="text-center mb-6">
+							    <br>
+								<img src="https://ssgenius.com/wp-content/uploads/2018/10/cropped-logo-1.png" class="h-6 h-6b" alt="">
+							</div>
+							<div class="card">
+								<div class="card-body p-6">
+									<div class="card-title text-center" style="color:#3B5998;"><i class="fa fa-facebook-square" style='font-size:40px; position:relative; left:-14px;'></i> Agregar una Cuenta Publicitaria</div>
+									<!--<hr />-->
+									
+									<!--<div class="visitor-list">
+											
+									</div>-->
+										
+								
+			<div class="form-footer">
+				<div class="app-content my-3 my-md-5">
+					<div class="side-app">
+						<div class="row">
+							<div class="col-md-12 col-lg-12">
+							<div class="card">
+							    <!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"  onlogin="fblogin();"></div>-->
+							    <a onclick="fblogin();" href="#">Login in!</a> 
+							    <!--<p class="mb-1" style="font-size: 15px; color: #999999;">Añada o quite sus cuentas publicitarias de Facebook al SSG</p>
+								<div class="card-header">
+									<div class="card-title">Añada o quite sus cuentas publicitarias de Facebook al SSG</div>
+								</div>-->
+								<div class="card-body">
+                                	<div class="table-responsive">
+									<table id="example" class="table table-striped table-bordered" style="width:100%">
+										<thead>
+											<tr>
+											    <th class="wd-10p" style="text-transform: capitalize !important;font-size: 15px;">Cuenta Publicitaria</th>
+												<!--<th class="wd-15p">Administrador Comercial</th>-->
+												<!--<th class="wd-20p">Status</th>-->
+												<th class="wd-10p" style="text-transform: capitalize !important;font-size: 15px;">Acción</th>
+											</tr>
+										</thead>
+										<tbody>
+										    <?php
+										     foreach ($arrayData as $anuncio){
+										         echo "<tr>";
+										         echo "<td><span style='color: rgb(4, 84, 163);'><b>".$anuncio['name']."</b></span><span style='font-size: 13px; color: #999999;'> (".$anuncio['account_id'].") </span>"."</td>";
+										         $checkIfFacebookAdAccountIsActive = $FacebookModel->checkIfFacebookAdAccountIsActive($anuncio['account_id']);
+										         if (!$checkIfFacebookAdAccountIsActive){
+                                                    echo "<td><a href='#' id='".$anuncio['account_id']."' data-id-facebook='".$id_facebook."' data-adaccount-name='".$anuncio['name']."' data-adaccount-status='".$anuncio['status']."' data-id-business='".$anuncio['id_business']."' data-business='".$anuncio['businessName']."' data-access-token='".$access_token."'  class='btn btn-outline-primary btn-sm add-adaccount'>Añadir</a></td>";
+										         } else {
+                                                    echo "<td><a href='#' class='text-warning quit-addacount' data-id-adaccount='".$anuncio['account_id']."' data-id-facebook='".$id_facebook."' data-access-token='".$access_token."' data-adaccount-name='".$anuncio['name']."'  data-adaccount-status='".$anuncio['status']."' data-id-business='".$anuncio['id_business']."' data-business='".$anuncio['businessName']."'>Quitar</a></td>";
+										         }
+                                                 echo "</tr>";    
+                                                }
+                                             ?>
+										</tbody>
+									</table>
+									
+<!--	<table id="vdatatable" class="display">
+    <thead>
+        <tr>
+            <th class="vertical-header-column">Código</th>
+            <th>P1</th>
+            <th>P2</th>
+            <th>P1</th>
+            <th>P2</th>
+            <th>P1</th>
+            <th>P2</th>
+            <th>P1</th>
+            <th>P2</th>
+            <th>P1</th>
+            <th>P2</th>
+            <th>P1</th>
+            <th>P2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>            
+            <th data-column="Username" class="vertical-header-column">Id Post</th>
+            <td>9115886</td>
+            <td >23425886</td>
+            <td>9115886</td>
+            <td >23425886</td>
+            <td>9115886</td>
+            <td >23425886</td>
+            <td>9115886</td>
+            <td >23425886</td>
+            <td>9115886</td>
+            <td >23425886</td>
+            <td>9115886</td>
+            <td >23425886</td>
+        </tr>
+        <tr>
+            <th class="vertical-header-column">Publicaciones</th>
+            <td >Sabías que la fiesta del...</td>
+            <td>¿Conoces nuestra variedad de...</td>
+            <td >Sabías que la fiesta del...</td>
+            <td>¿Conoces nuestra variedad de...</td>
+            <td >Sabías que la fiesta del...</td>
+            <td>¿Conoces nuestra variedad de...</td>
+            <td >Sabías que la fiesta del...</td>
+            <td>¿Conoces nuestra variedad de...</td>
+            <td >Sabías que la fiesta del...</td>
+            <td>¿Conoces nuestra variedad de...</td>
+            <td >Sabías que la fiesta del...</td>
+            <td>¿Conoces nuestra variedad de...</td>
+        </tr>
+        <tr>
+            <th class="vertical-header-column">Fecha</th>
+            <td>2018-11-06</td>
+            <td>2018-11-07</td>
+            <td>2018-11-06</td>
+            <td>2018-11-07</td>
+            <td>2018-11-06</td>
+            <td>2018-11-07</td>
+            <td>2018-11-06</td>
+            <td>2018-11-07</td>
+            <td>2018-11-06</td>
+            <td>2018-11-07</td>
+            <td>2018-11-06</td>
+            <td>2018-11-07</td>
+        </tr>
+        <tr>        
+            <th class="vertical-header-column">Hora Creación</th>
+            <td>12:52</td>
+            <td>18:30</td>
+            <td>12:52</td>
+            <td>18:30</td>
+            <td>12:52</td>
+            <td>18:30</td>
+            <td>12:52</td>
+            <td>18:30</td>
+            <td>12:52</td>
+            <td>18:30</td>
+            <td>12:52</td>
+            <td>18:30</td>
+        </tr>
+    </tbody>
+</table>-->
+
+								</div>
+                                </div>
+								<!-- table-wrapper -->
+							</div>
+							<!-- section-wrapper -->
+
+							</div>
+						</div>
+					</div>
+                    <?php include('views/pie-pagina.php'); ?>
+				</div>
+		</div>
+								</div>
+                        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Dashboard js -->
+		<script src="../assets/js/vendors/jquery-3.2.1.min.js"></script>
+		<script src="../assets/js/vendors/bootstrap.bundle.min.js"></script>
+		<script src="../assets/js/vendors/selectize.min.js"></script>
+		<script src="../assets/js/vendors/circle-progress.min.js"></script>
+		<script src="../assets/plugins/rating/jquery.rating-stars.js"></script>
+
+		<!-- Fullside-menu Js-->
+		<script src="../assets/plugins/toggle-sidebar/js/sidemenu.js"></script>
+
+		<!-- Data tables -->
+		<script src="../assets/plugins/datatable/jquery.dataTables.min.js"></script>
+		<script src="../assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+
+		<!-- Select2 js -->
+		<script src="../assets/plugins/select2/select2.full.min.js"></script>
+
+		<!-- Custom scroll bar Js-->
+		<script src="../assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+		<!-- Custom Js-->
+		<script src="../assets/js/custom.js"></script>
+
+		<!-- Data table js -->
+		<script>
+			$(function(e) {
+				$('#example').DataTable({ 
+				    responsive: true,
+				    "language":{
+				        lengthMenu:     "Ver _MENU_ ",
+				        search:         "Buscar:",
+				        info:           "Mostrando _START_ a _END_ de _TOTAL_ cuentas publicitarias",
+                        infoEmpty:      "",
+                        loadingRecords: "Cargando...",
+                        zeroRecords:    "No hay cuentas publicitarias",
+                        emptyTable:     "0 cuentas publicitarias",
+                        processing:     "Procesando...",
+                        paginate: {
+                            first:      "Primero",
+                            previous:   "Anterior",
+                            next:       "Siguiente",
+                            last:       "Último"
+                        },
+                        infoFiltered:   "(filtrado de _MAX_ )",
+            aria: {
+                sortAscending:  ": Activar para ordenar la columna de manera ascendente",
+                sortDescending: ": Activar para ordenar la columna de manera descendente"
+            }
+				        //"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+				        
+				    }
+         });
+         
+         /*$('#vdatatable').DataTable({
+             				    responsive: true,
+				    "language":{
+				        lengthMenu:     "Ver _MENU_ ",
+				        search:         "Buscar:",
+				        info:           "Mostrando _START_ a _END_ de _TOTAL_ cuentas publicitarias",
+                        infoEmpty:      "",
+                        loadingRecords: "Cargando...",
+                        zeroRecords:    "No hay cuentas publicitarias",
+                        emptyTable:     "0 cuentas publicitarias",
+                        processing:     "Procesando...",
+                        paginate: {
+                            first:      "Primero",
+                            previous:   "Anterior",
+                            next:       "Siguiente",
+                            last:       "Último"
+                        },
+                        infoFiltered:   "(filtrado de _MAX_ )",
+            aria: {
+                sortAscending:  ": Activar para ordenar la columna de manera ascendente",
+                sortDescending: ": Activar para ordenar la columna de manera descendente"
+            }
+				        //"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+				        
+				    },
+    dom:            'ftip',
+   // stateSave:      saveState,
+    retrieve:       true,
+    autoWidth:      false,
+    info:           true,
+    paging:         false,
+    scrollY:        false,
+    scrollX:        true,
+    scrollCollapse: false,
+    fixedHeader:    true,
+    paging:   false,
+    info:     false,
+    fixedColumns:   {
+        leftColumns: 1
+    },
+});*/
+			} );
+		</script>
+<script>
+  (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));          
+    
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '1930491627191257',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      cookie           : true,
+      version          : 'v3.2'
+    });
+    FB.getLoginStatus(function (response) {
+    if (response.status === 'connected') {
+        console.log(response);
+        console.log('Usuario conectado a facebook');
+        console.log('Token: '+ response.authResponse.accessToken);
+    } else { console.log('Usuario no conectado a Facebook'); }
+});
+  };
+
+
+   
+    function fblogin()
+    {
+        //checkLoginState();
+        FB.login(function (response) {
+            if (response.authResponse) {
+                window.location.replace("https://ssgenius.com/app/facebook/login/fb-callback-test.php");
+                console.log('Logeando al usuario en la app');
+                console.log(response);
+               // FB.api('/me/adaccounts?fields=name,account_id,account_status', function (response) {
+                   // console.log(JSON.stringify(response));
+               // });
+            } else if (response.status === 'not_authorized') {
+            // The person is logged into Facebook, but not your app.
+            console.log('User did not fully authorize.');
+            //document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
+        }
+        else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        }, { scope: 'public_profile,email,pages_show_list,manage_pages,read_insights,ads_read' });
+    }
+    
+    function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        // The response object is returned with a status field that lets the
+        // app know the current login status of the person.
+        // Full docs on the response object can be found in the documentation
+        // for FB.getLoginStatus().
+        if (response.status === 'connected') {
+            // Logged into your app and Facebook.
+            //testAPI();
+            console.log('Usuario logeado');
+        } else if (response.status === 'not_authorized') {
+            // The person is logged into Facebook, but not your app.
+            document.getElementById('status').innerHTML = 'Please log ' +
+              'into this app.';
+        } else {
+            // The person is not logged into Facebook, so we're not sure if
+            // they are logged into this app or not.
+            document.getElementById('status').innerHTML = 'Please log ' +
+              'into Facebook.';
+        }
+    }
+    
+      function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    }
+</script>
+</body>
+</html>
+    
+    

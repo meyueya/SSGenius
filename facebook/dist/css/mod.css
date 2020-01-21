@@ -1,0 +1,206 @@
+  .ranges li.active {
+    background-color: #6bd098;
+    border: 1px solid #6bd098;
+    color: #fff;
+}
+
+.ranges li:hover {
+    background-color: #6bd098;
+    border: 1px solid #6bd098;
+    color: #fff;
+}
+
+/*.btn-success {
+    background-color: #ef8157;
+    color: #fff;
+}
+*/
+.ranges li {
+
+    color: #000000;
+  }
+
+ 
+
+.daterangepicker td.active, .daterangepicker td.active:hover {
+    background-color: #6bd098;
+
+  }
+
+  .sidebar[data-active-color=danger] .nav li.active>a, .sidebar[data-active-color=danger] .nav li.active>a i { 
+    color: #6bd098 !important;
+    opacity: 1;
+}
+.off-canvas-sidebar .logo a.logo-mini, .sidebar .logo a.logo-mini {
+    opacity: 1;
+  }
+
+  tbody {
+    font-size: 12px;
+  }
+  
+  .btn{
+    max-width: 100% !important;
+    border-width: 1px;
+    font-weight: 500;
+    font-size: 8px;
+  
+   
+    margin: 16px 1px;
+  }
+  
+  .btn-default {
+      background-color: #6bd098;
+  }
+  
+.pagination .page-item.active>.page-link, .pagination .page-item.active>.page-link:focus, .pagination .page-item.active>.page-link:hover {
+    background-color: #6bd098 !important;
+    border-color: #6bd098 !important;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #6bd098;
+    color: #fff;
+}
+#dvLoading
+            {
+               background:#000 url(http://www.vippskorea.com/theme/freelancerx/skin/board/VIPvirtual_tour/img/loading.gif) no-repeat center center;
+               background-color: transparent;
+               height: 200px;
+               width: 200px;
+               position: fixed;
+               z-index: 10000;
+               left: 50%;
+               top: 49%;
+               margin: -25px 0 0 -25px;
+            }
+            
+            
+
+/*.daterangepicker.ltr .calendar{
+    display: none !important;
+}
+
+.range_inputs{
+    display: none !important;
+}*/
+
+
+._mB {
+  background-color: #efc439;
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  padding: 0 2px;
+  line-height: 14px;
+  vertical-align: baseline;
+}
+
+._mB_green {
+  background-color: #59946B;
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  padding: 0 2px;
+  line-height: 14px;
+  vertical-align: baseline;
+}
+
+
+a.headline {
+  color:#1a0dab;
+}
+
+a.headline {
+  font-size:18px;
+  font-weight: normal;
+}
+
+a.headline:hover {
+  color:#1a0dab;
+}
+
+
+div.urlline {
+  margin-top:-4px;
+  margin-bottom:0px;
+}
+
+span.displayurl {
+  color:#006621;
+  font-size:14px;
+  margin-left:2px;
+}
+
+span.callextension {
+  color: #545454;
+  font-size: small;
+  margin-left: 8px;
+}
+
+span.description {
+  font-size:small;
+  color:#545454;
+
+}
+.preview{
+      margin-bottom: 12px;
+}
+.preview:before{
+      content: attr(data-id)" - ";
+      position: absolute;
+      font-size: 19px;
+      left: 17px;
+      color: #868383;
+      }
+ .card-text{
+   text-align: center;
+ }   
+
+ p {
+    margin-top: 0;
+     margin-bottom: 5px; 
+    
+}  
+
+.card {
+    margin: 5px;
+    border: 1px solid #ccc;
+}
+
+
+.card label {
+    font-size: .7142em;
+    /* margin-bottom: 5px; */
+    color: #807b7b;
+}
+
+.trans{
+
+  display: flex;
+  justify-content: center;
+}
+
+.card-wizard .card-title+.description, .h5, h5, .btn   {
+  margin: 1px;
+}
+
+.main-panel>.content {
+    padding: 0;
+    /* min-height: calc(100vh - 123px); */
+    margin-top: 72px;
+}
+
+
+
+/*img.imgface  {
+    border-radius: 10px !important;
+    width: 81px !important;
+}
+
+.cont{
+  font-size: 16px;
+}*/

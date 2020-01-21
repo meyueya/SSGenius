@@ -1,0 +1,9 @@
+.idea
+composer.lock
+bower_components
+**/SQLite/*.db
+**/logs/*.log
+**/storage/img/*.jpg
+**/storage/img/*.png
+**/storage/pdf/*.pdf
+
