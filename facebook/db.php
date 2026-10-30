@@ -1,105 +1,87 @@
-<?php 
-    session_start();
-    
+<?php
+session_start();
 
-    function obtenerDireccionIP()
-    {
-        if (!empty($_SERVER ['HTTP_CLIENT_IP'] ))
-          $ip=$_SERVER ['HTTP_CLIENT_IP'];
-        elseif (!empty($_SERVER ['HTTP_X_FORWARDED_FOR'] ))
-          $ip=$_SERVER ['HTTP_X_FORWARDED_FOR'];
-        else
-          $ip=$_SERVER ['REMOTE_ADDR'];
-     
-        return $ip;
+function required_database_environment($name)
+{
+    $value = getenv($name);
+    if ($value === false || $value === '') {
+        throw new RuntimeException('Missing required environment variable: ' . $name);
     }
+    return $value;
+}
 
-
-
-    function restringirConjuntoIps($ips)
-    {
-        $ipCliente = obtenerDireccionIP();
-     
-        if (in_array($ipCliente,$ips))
-        {
-            return true;
-        }
-        else
-        {
-            header('Location: http://aiw-roi.com/sistema/AIW/denied.php');
-            exit;
-        }
+function obtenerDireccionIP()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        return $_SERVER['HTTP_CLIENT_IP'];
     }
-
-
-    function restringirIp($ip)
-    {
-        $ipCliente = obtenerDireccionIP();
-     
-        if($ipCliente == $ip)
-        {
-            return true;
-        }
-        else
-        {
-            header('Location: http://aiw-roi.com/sistema/AIW/denied.php');
-            exit;
-        }
+    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        return $_SERVER['HTTP_X_FORWARDED_FOR'];
     }
-    $datosPEC=array(
-    'usuario'=>'aiwroi_pec',
-    'clave'=>'n_4qOW.[X1%)',
-    'db'=>'aiwroi_pec',
-    'nombreCarrera'=>'PEC'
-    );
-    $datosILCB=array(
-    'usuario'=>'aiwroi_ilcb',
-    'clave'=>'HW;SXrhefqR%',
-    'db'=>'aiwroi_ilcb',
-    'nombreCarrera'=>'ILCB'
-    );
-    $datosMASTER=array(
-    'usuario'=>'aiwroi_aiwlcb',
-    'clave'=>']a_nc#S}LthH',
-    'db'=>'aiwroi_master_cuisine',
-    'nombreCarrera'=>'MASTER'
-    );
-    $datosULCB=array(
-    'usuario'=>'aiwroi_ulcb',
-    'clave'=>'0a#k}3m!$x4P',
-    'db'=>'aiwroi_ulcb',
-    'nombreCarrera'=>'ULCB'
-    );
-    
-	if(!isset($_GET['grupo']) && $_SESSION['db']==null ){
-	$db = mysql_connect("localhost", "aiwroi_ilcb","HW;SXrhefqR%") or die(mysql_error());
-	mysql_select_db("aiwroi_ilcb", $db) or die(mysql_error());
-	}else{
-    	switch ($_GET['grupo']) {
-        case "PEC":
-            $_SESSION['user']=$datosPEC['usuario'];
-            $_SESSION['pass']=$datosPEC['clave'];
-            $_SESSION['db']=$datosPEC['db'];
-            break;
-        case "ILCB":
-            $_SESSION['user']=$datosILCB['usuario'];
-            $_SESSION['pass']=$datosILCB['clave'];
-            $_SESSION['db']=$datosILCB['db'];
-            break;
-        case "MASTER":
-            $_SESSION['user']=$datosMASTER['usuario'];
-            $_SESSION['pass']=$datosMASTER['clave'];
-            $_SESSION['db']=$datosMASTER['db'];
-            break;
-        case "ULCB":
-            $_SESSION['user']=$datosULCB['usuario'];
-            $_SESSION['pass']=$datosULCB['clave'];
-            $_SESSION['db']=$datosULCB['db'];
-            break;
-        }
-        $db = mysql_connect("localhost", $_SESSION['user'],  $_SESSION['pass']) or die(mysql_error());
-    	mysql_select_db( $_SESSION['db'], $db) or die(mysql_error());
-        
-	}
-	
-?>
+    return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+}
+
+function restringirConjuntoIps($ips)
+{
+    if (!in_array(obtenerDireccionIP(), $ips, true)) {
+        header('Location: /denied.php');
+        exit;
+    }
+    return true;
+}
+
+function restringirIp($ip)
+{
+    if (obtenerDireccionIP() !== $ip) {
+        header('Location: /denied.php');
+        exit;
+    }
+    return true;
+}
+
+$groups = array(
+    'PEC' => array(
+        'usuario' => getenv('DB_PEC_USER'),
+        'clave' => getenv('DB_PEC_PASSWORD'),
+        'db' => getenv('DB_PEC_NAME'),
+        'nombreCarrera' => 'PEC'
+    ),
+    'ILCB' => array(
+        'usuario' => getenv('DB_ILCB_USER'),
+        'clave' => getenv('DB_ILCB_PASSWORD'),
+        'db' => getenv('DB_ILCB_NAME'),
+        'nombreCarrera' => 'ILCB'
+    ),
+    'MASTER' => array(
+        'usuario' => getenv('DB_MASTER_USER'),
+        'clave' => getenv('DB_MASTER_PASSWORD'),
+        'db' => getenv('DB_MASTER_NAME'),
+        'nombreCarrera' => 'MASTER'
+    ),
+    'ULCB' => array(
+        'usuario' => getenv('DB_ULCB_USER'),
+        'clave' => getenv('DB_ULCB_PASSWORD'),
+        'db' => getenv('DB_ULCB_NAME'),
+        'nombreCarrera' => 'ULCB'
+    )
+);
+
+$group = isset($_GET['grupo']) ? $_GET['grupo'] : 'ILCB';
+if (!isset($groups[$group])) {
+    throw new InvalidArgumentException('Unknown database group.');
+}
+
+$config = $groups[$group];
+foreach (array('usuario', 'clave', 'db') as $requiredKey) {
+    if ($config[$requiredKey] === false || $config[$requiredKey] === '') {
+        throw new RuntimeException('Missing database environment configuration for ' . $group);
+    }
+}
+
+$_SESSION['user'] = $config['usuario'];
+$_SESSION['pass'] = $config['clave'];
+$_SESSION['db'] = $config['db'];
+
+$db = mysql_connect(getenv('DB_HOST') ?: 'localhost', $_SESSION['user'], $_SESSION['pass'])
+    or die('Database connection failed.');
+mysql_select_db($_SESSION['db'], $db) or die('Database selection failed.');
