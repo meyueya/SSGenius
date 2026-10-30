@@ -8,10 +8,10 @@ require_once '/model/SsgInstagramModel.php'; //
 // -- Instancias
 $SsgInstagramModel = new SsgInstagramModel();
 $helper = new Helper_GraphAPI();
-$appId = '177087713398265'; //Facebook App ID
+$appId = getenv('FACEBOOK_APP_ID'); //Facebook App ID
 $fb = new Facebook\Facebook([
     'app_id' => $appId,
-    'app_secret' => "fa41517e01f08bb85f077270f3de3a01",
+    'app_secret' => getenv('FACEBOOK_APP_SECRET'),
     'default_graph_version' => 'v5.0',
     'persistent_data_handler' => 'memory'
 ]);
