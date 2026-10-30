@@ -23,14 +23,15 @@ class SsgFacebookHelper
 {
     private $appID;
 	private $appSecret;
-	private $appToken = '292708578241182|7Cel0aLIhnUZuYiQdHxaNYRjD2s';//token de aplicacion SSG
+	private $appToken;//token de aplicacion SSG
 	                    
 	public function __construct($appID = null, $appSecret = null){
 	    if ($appID == null){
-	        $this->appID = '292708578241182';
+	        $this->appID = getenv('FACEBOOK_APP_ID');
 	    }
 	    if ($appSecret == null){
-	        $this->appSecret = '462aeec937ca833dd9798c944d5c79e2';
+	        $this->appSecret = getenv('FACEBOOK_APP_SECRET');
+	        $this->appToken = getenv('FACEBOOK_APP_TOKEN');
 	    }
 	    }	
 	public function getApi($access_token){
@@ -63,7 +64,7 @@ class SsgFacebookHelper
         try {
           // Returns a `Facebook\FacebookResponse` object
           $fb = $this->getFb();
-          $response = $fb->get('/debug_token?input_token='.$token,'292708578241182|7Cel0aLIhnUZuYiQdHxaNYRjD2s')->getDecodedBody();
+          $response = $fb->get('/debug_token?input_token='.$token, $this->appToken)->getDecodedBody();
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
           echo 'Facebook Graph returno un error: ' . $e->getMessage();
          // exit;
@@ -112,11 +113,11 @@ class SsgFacebookHelper
 	    if (!isset($return["message"])){ $return["message"] = "true"; }
 	}
 }
-//$access_token = "292708578241182|7Cel0aLIhnUZuYiQdHxaNYRjD2s"; //app token
+//$access_token = "REDACTED_FACEBOOK_APP_TOKEN"; //app token
 /*$SsgFacebookHelper = new SsgFacebookHelper();
 $api = $SsgFacebookHelper->getApi($access_token);
 
-$input_token = "EAAEKN4bUKp4BAC9fCCS3O2Xc1u1sMStAi60xhfIvzsSlEdv9SgD6TZCUHGwA0RVpK01fbokVN3KuvIOtpRQoWEk514sS5R9t49qY1WtV5JB49mtmJsHK6VeHyZB7rLYTXdTXFhGJbmqdRZBN6AweZCZB3yaLMRgRTT7ZAYOm4uBgZDZD";
+$input_token = "REDACTED_FACEBOOK_ACCESS_TOKEN";
 $responseToken = $SsgFacebookHelper->debug_token($input_token,$access_token);
 echo "<pre>";
 print_r($responseToken);
