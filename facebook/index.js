@@ -1,7 +1,7 @@
 var express= require('express');
 var bodyParser= require('body-parser');
 var request= require('request');
-const APP_TOKEN = "EAAEKN4bUKp4BAN6TXNYda7O3XGqTM0GXmLSjj7zTx8zP7zQyOJ3rZBNOb2dzw0nwXWO14p8smp97Jbnulp3dAFV1FSI914VjW0zqdUvPeMn4m81X4dM6utXjZBBulijS1sUQZBOgkyD5BB4Pb3vrxs8O63MQ4nxzOVib0p6dAZDZD";
+const APP_TOKEN = window.SSGENIUS_CONFIG?.facebookAppToken || '';
 
 var app = express();
 app.use(bodyParser.json());
