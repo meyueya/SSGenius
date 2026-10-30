@@ -8,8 +8,8 @@ require_once __DIR__ . '/vendor/autoload.php'; // sdk Graph
 
 
 $fb = new Facebook\Facebook([
-    'app_id' => "407601339908270",
-    'app_secret' => "333e7908cd746f272bd3e5ebeb44985b",
+    'app_id' => getenv('FACEBOOK_APP_ID'),
+    'app_secret' => getenv('FACEBOOK_APP_SECRET'),
     'default_graph_version' => 'v3.2',
 ]);
 
