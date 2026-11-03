@@ -22,10 +22,10 @@ use FacebookAds\Object\Ad;
 use FacebookAds\Object\AdCreative;
 
 /*$app_id = '1930491627191257';
-$app_secret = '934f83f24436ea82749ca6b5fafc6281';*/
+$app_secret = getenv('FACEBOOK_APP_SECRET');*/
 $app_id = '1390656151047512';
-$app_secret = 'fc4851b7005ad93bdf2cb87475d1d077';
-$access_token = 'EAATwy13jTVgBAAsIkSvnnIKTJAZCvxIZCr5A6VdFT6UqwkmVRQVlvqkB54PZCPdXwITQBtsI2Ix1pEG3YgYcMpZAkzLFMTrNTTIGcpZB7JQ6UIR2A5ZC0I23rIhZBOhsn9McL3E4LYRpMfivvrprPZAI1WmTxFq4cPMmdJy7NPj0Jcap8RPbYb4XSZAgoHD1bgceuVhjGKneOBgZDZD';//variable
+$app_secret = getenv('FACEBOOK_APP_SECRET');
+$access_token = getenv('FACEBOOK_ACCESS_TOKEN');//variable
 
 //$ad_account_id = 'act_1487762988004826';//variable
 //para pruebas

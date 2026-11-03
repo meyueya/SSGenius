@@ -2,7 +2,7 @@
 session_start();
 require_once( '../php-sdk-5/vendor/autoload.php' );
 $appId         = '1930491627191257'; //Facebook App ID
-$appSecret     = '934f83f24436ea82749ca6b5fafc6281'; //Facebook App Secret
+$appSecret     = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
 $fb = new Facebook\Facebook([
   'app_id' => $appId,
   'app_secret' => $appSecret,

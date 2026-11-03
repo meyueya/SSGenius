@@ -37,8 +37,8 @@ $_GET = ['655873111499297'] ;
     echo('</pre>');
 
     $app_id = '292708578241182';
-    $app_secret = '462aeec937ca833dd9798c944d5c79e2';
-    //$access_token = 'EAAEKN4bUKp4BAMkDVU0QysRMazDcJOsZBZCvkbiwiUzjr3gVLTn1a9mmZB2hfcrZA21pbQ2ofEI0MMFa9ne1WcIbiFT6ZC5cRYFXhHbbjVZBPsBHDSmfE9uloDSB290ArTztDjl2TY7HygfdmiBvM95YpH19FCUFLGIaZCkMXRvqwZDZD';
+    $app_secret = getenv('FACEBOOK_APP_SECRET');
+    //$access_token = getenv('FACEBOOK_ACCESS_TOKEN');
     $table = "aiw_facebook_data_ads";//tabla de guardado de insights ads 
         
       if (isset($_GET['0'])){

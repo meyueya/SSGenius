@@ -5,7 +5,7 @@ $SsgHelper = new SsgHelper();
 $ip = $SsgHelper->get_client_ip();
 require_once( '/home/ssgenius/public_html/app/facebook/php-sdk-5/vendor/autoload.php' );
 $appId         = '292708578241182'; //Facebook App ID
-$appSecret     = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+$appSecret     = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
 $fb = new Facebook\Facebook([
   'app_id' => $appId,
   'app_secret' => $appSecret,

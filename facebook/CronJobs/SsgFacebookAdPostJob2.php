@@ -25,7 +25,7 @@ use FacebookAds\Object\Ad;
 use FacebookAds\Object\AdCreative;
 
     $app_id = '292708578241182';
-    $app_secret = '462aeec937ca833dd9798c944d5c79e2';
+    $app_secret = getenv('FACEBOOK_APP_SECRET');
 
     if (isset($_GET['adaccount'])){
        $account_id =  $_GET['adaccount'];
@@ -39,8 +39,8 @@ use FacebookAds\Object\AdCreative;
     /*$account_id = "1487762988004826";*/
     //$account_id = "1060525460728583";//mamitips
     //$ad_account_id = 'act_'.$account_id;
-    //$access_token = "EAAEKN4bUKp4BAJYHznerCpw1Pu4sKmSSd4t9x3Ui7IENtd2eLWYSYq7G21HZAPXDOOPWH63x383siN2jOr9bhso0OlF47ktCXevT4eqyaCIhk30TUaiTCgzll76mooR3TmilzEjy3VLP0la844s9kt40m58gpRZCa6RZC3yMQZDZD";
-    //$access_token = "EAAEKN4bUKp4BAKeTTGmLbLhBn2pSoCAZCgkZBcupzyzIwCyCNklcI122lJDGTH5I08C8kh6vybmzrzDNLZAd28cbCpUXrBioEEuFwyMLTsBkmIhXUx42S9qOZCOg9Ru8gqEiSE4N0qO4uq00FafxpJ7zEWPZC6YrKgHxI0hmmsAZDZD";
+    //$access_token = getenv('FACEBOOK_ACCESS_TOKEN');
+    //$access_token = getenv('FACEBOOK_ACCESS_TOKEN');
     
     // Configurations - End
     if (is_null($access_token) || is_null($app_id) || is_null($app_secret)) {  throw new \Exception('You must set your access token, app id and app secret before executing'  );}

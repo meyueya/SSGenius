@@ -79,7 +79,7 @@ $job = $FacebookModel->getFacebookPostPageJob($keyJob);
 } else { $return["message"] = "no hay keyJob"; exit(); }
 
 $app_id = '292708578241182';
-$app_secret = '462aeec937ca833dd9798c944d5c79e2';
+$app_secret = getenv('FACEBOOK_APP_SECRET');
 $access_token = $job->access_token;
 $page_token = $job->page_token; 
 $id_page = $job->id_facebook_page; 
@@ -87,7 +87,7 @@ $id_page = $job->id_facebook_page;
 //echo "<pre>";
  //var_dump($id_page);
 //echo"</pre>";
-//$page_token = 'EAAEKN4bUKp4BAKZCWZBZC0TBDwbzABJISLriQ8RpRnjyUBRrqcGzmSYkNTNoujEJe0rPfTASUabo1soW3ZAQzOyC41K68njdAedH4WYXZCG40kA7G8nFUc7OI2QM7Dyd7ULwkQGDWlPKDJUw7Jt5zFnGiUSa3mtFRWsZAWyuLFegZDZD'; 
+//$page_token = getenv('FACEBOOK_ACCESS_TOKEN'); 
 //$id_page = '192597304105183'; 
 
 function sendMailer($mail_destino,$asunto,$mensaje)

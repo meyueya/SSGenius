@@ -4,7 +4,7 @@ $_SESSION = Array();
 session_destroy();
 /*require_once( '/home/ssgenius/public_html/app/facebook/php-sdk-5/vendor/autoload.php' );
 $appId         = '292708578241182'; //Facebook App ID
-$appSecret     = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+$appSecret     = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
 $redirectURL   = 'https://ssgenius.com/app/facebook/login/fb-callback.php'; //Callback URL
 //permisos en cola 'user_link','ads_management','ads_read','publish_pages','business_management','read_page_mailboxes'
 $permissions = array('public_profile','email','pages_show_list','manage_pages','read_insights','ads_read'); // permissions

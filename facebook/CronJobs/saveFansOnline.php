@@ -22,9 +22,9 @@ define('DB_SERVER_USERNAME', $database['user']);
 define('DB_SERVER_PASSWORD', $database['pass']);
 define('DNS',$database['dns']);
 // $app_id = '292708578241182';
-// $app_secret = '462aeec937ca833dd9798c944d5c79e2';
-// $access_token = 'EAAbbxZAuuO9kBALT8dRMvtDQxH6rf7Y0Q34PbVP4NO3DTCZBKyMAJMTTgcmVUd5FPDxC0N8KwFWF3eXZBx7OnbUUgoFE2gsUBaZCBudMxb2ljcCZAsBpZB8wDoY0nmoWrLoZCZB3qWGA7prh4YIeEVgSTudVIN50WEyxYP6ZC8gSEbQZDZD';
-// $page_token = "EAAbbxZAuuO9kBAGc81CCBVMe2FCkouv6oyyyfSpE8G0nKsTWEiWm75CXJ8IoX1pMlpId3mF8ZCwrDmpnNBK8CHflVZCKySD8LHcrpRD8K3FIzmtTP0TPVAh0HDhBb4FUhmpsJGlJSjteSPUIdqdY5CxRZCvdyNyxZCjsuzBKYLjv1sXqflRRlbhfE0uhggBGMl5iSzkWVSgZDZD"; //movil tours page token
+// $app_secret = getenv('FACEBOOK_APP_SECRET');
+// $access_token = getenv('FACEBOOK_ACCESS_TOKEN');
+// $page_token = getenv('FACEBOOK_ACCESS_TOKEN'); //movil tours page token
 // $id_page = '192597304105183'; //movil tours page id
 
 
@@ -38,7 +38,7 @@ $job = $FacebookModel->getFacebookPostPageJob($keyJob);
 if ($job == false){ $return["message"] = "Error DB"; exit();}
 } else { $return["message"] = "no hay keyJob"; exit(); }
 $app_id = '292708578241182';
-$app_secret = '462aeec937ca833dd9798c944d5c79e2';
+$app_secret = getenv('FACEBOOK_APP_SECRET');
 $access_token = $job->access_token;
 $page_token = $job->page_token; 
 $id_page = $job->id_facebook_page; 

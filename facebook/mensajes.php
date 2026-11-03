@@ -22,11 +22,11 @@ $FacebookModel = new FacebookModel();
 if (isset($_SESSION['fb_access_token'])){
 $access_token = $_SESSION['fb_access_token'];
 }
-$access_token ="EAAEKN4bUKp4BAEg8LRvvZB4OIf7aP69ZCUyQ9vDlvroXiBqwSr8ZBU767QU3rum0rwwDZAbt3wNNSuZAli45BaJWu8qG2E5JcL1fzCmLFHJdCb5vVGZBcb7rmfZCsqYtEFOGLBez05jBBCUSLVcMgpZAnRrkb17yCo42YT6ZAbUzbZAQZDZD";
+$access_token =getenv('FACEBOOK_ACCESS_TOKEN');
 
     if (!isset($access_token)){ header('Location: https://ssgenius.com/app/facebook/login'); }
     $appId         = '292708578241182'; //Facebook App ID
-    $appSecret     = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+    $appSecret     = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
     try{
     $api = Api::init($appId, $appSecret, $access_token);
     $api->setLogger(new CurlLogger());

@@ -20,7 +20,7 @@ $FacebookModel = new FacebookModel();
 $SsgHelper = new SsgHelper();
 $ip = $SsgHelper->get_client_ip();
 //$_SESSION = Array();
-$access_token = 'EAAEKN4bUKp4BACA8JTsxjLIrCGmQ2k4wX9oAtcaEZCzhAXhDaPzZBUNL4JemCcZAdBcM7Dg2mYxmTnGVJSZAHJiAdOsVZCP7EfGSeZB5siMXE2lZAbQ6kZAbIqB8TyZCjjkH5W42KIS6dKYoa7GWyJpjNfaN5Pjr2IUUKb88MQm5BigZDZD';
+$access_token = getenv('FACEBOOK_ACCESS_TOKEN');
 
 //echo $access_token;
     if ((!isset($access_token)) || (!$access_token)){ 
@@ -31,7 +31,7 @@ $access_token = 'EAAEKN4bUKp4BACA8JTsxjLIrCGmQ2k4wX9oAtcaEZCzhAXhDaPzZBUNL4JemCc
     }
     // Instantiates a new Facebook super-class object from SDK Facebook\Facebook
     $appId = '292708578241182'; //Facebook App ID
-    $appSecret = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+    $appSecret = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
          $fb = new Facebook\Facebook([
           'app_id' => $appId,
           'app_secret' => $appSecret,

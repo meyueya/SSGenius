@@ -17,8 +17,8 @@ if (!defined('STDOUT'))
 define('SDK_DIR', '../facebook-php-business-sdk/'); // Path to the SDK directory
 $loader = include SDK_DIR.'/vendor/autoload.php';
 $app_id = '292708578241182';
-$app_secret = '462aeec937ca833dd9798c944d5c79e2';
-$access_token = 'EAAEKN4bUKp4BAMkDVU0QysRMazDcJOsZBZCvkbiwiUzjr3gVLTn1a9mmZB2hfcrZA21pbQ2ofEI0MMFa9ne1WcIbiFT6ZC5cRYFXhHbbjVZBPsBHDSmfE9uloDSB290ArTztDjl2TY7HygfdmiBvM95YpH19FCUFLGIaZCkMXRvqwZDZD';
+$app_secret = getenv('FACEBOOK_APP_SECRET');
+$access_token = getenv('FACEBOOK_ACCESS_TOKEN');
 $ad_account_id = 'act_1487762988004826';
 $account_id = explode('act_',$ad_account_id);
 $account_id = $account_id[1];

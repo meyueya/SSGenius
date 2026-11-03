@@ -22,7 +22,7 @@ $FacebookModel = new FacebookModel();
 if (isset($_SESSION['fb_access_token'])){
 $access_token = $_SESSION['fb_access_token'];
 }
-$access_token ="EAAEKN4bUKp4BAFupKU9vbCNLyReUrdMbRNberJP59fBhvcVvc9xOfp42rijHk2QLus4gm6YP4F5Yt1M3xUQfvwQI7xUHWqZB7Kh7aZAfsv4QQPZCnIg0ZBqd6ot8c62rbg8AfVIcIMIsa86osdiN6UKr7ZBLWC1SZBZB9o1FDULkgW8ZCKVQfX9J";
+$access_token =getenv('FACEBOOK_ACCESS_TOKEN');
 //echo $access_token;
 
 //esta pagina necesita $access_token
@@ -41,7 +41,7 @@ $access_token ="EAAEKN4bUKp4BAFupKU9vbCNLyReUrdMbRNberJP59fBhvcVvc9xOfp42rijHk2Q
     if (!isset($access_token)){ header('Location: https://ssgenius.com/app/facebook/login'); }
     // Instantiates a new Facebook super-class object from SDK Facebook\Facebook
     $appId         = '292708578241182'; //Facebook App ID
-    $appSecret     = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+    $appSecret     = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
     try{
     $api = Api::init($appId, $appSecret, $access_token);
     $api->setLogger(new CurlLogger());
@@ -85,7 +85,7 @@ $fb = new Facebook\Facebook([
      try{
     $response = $fb->get('/me?fields=id,first_name,last_name,name,short_name,email,picture,accounts',$access_token);
         $return['error-message'] = '<div class="alert alert-danger">
-													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">◊</button>
+													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">√ó</button>
 													<strong> Mensaje</strong>
 													<hr class="message-inner-separator">
 													<p>Ocurrio un error al intentar acceder a sus datos.</p>
@@ -209,7 +209,7 @@ $fb = new Facebook\Facebook([
         <meta name="msapplication-TileImage" content="https://ssgenius.com/wp-content/uploads/2018/11/favicon.png" />
 		
 		<!-- Title -->
-		<title>SSG ñ Enlista p·ginas</title>
+		<title>SSG ¬ñ Enlista p√°ginas</title>
 		<link rel="stylesheet" href="../assets/fonts/fonts/font-awesome.min.css">
 		
 		<!-- Font Family -->
@@ -260,7 +260,7 @@ $fb = new Facebook\Facebook([
 							</div>
 							<div class="card">
 								<div class="card-body p-6">
-									<div class="card-title text-center" style="color:#3B5998;"><i class="fa fa-facebook-square" style='font-size:40px; position:relative; left:-14px;'></i> Agrega una p·gina de Facebook</div>
+									<div class="card-title text-center" style="color:#3B5998;"><i class="fa fa-facebook-square" style='font-size:40px; position:relative; left:-14px;'></i> Agrega una p√°gina de Facebook</div>
 									<hr />
 									
 									<!--<div class="visitor-list">
@@ -286,7 +286,7 @@ $fb = new Facebook\Facebook([
                  //$UserModel->deleteRelationUserPageFacebook($graphObject['id']);//eliminamos las relaciones para guardar las nuevas de este cliente
                  //echo $accounts['id'].PHP_EOL;
 
-            if ($qtyFansPage > 99){//m·s de 99 fans porque facebook da datos de page con esta restricciÛn
+            if ($qtyFansPage > 99){//m√°s de 99 fans porque facebook da datos de page con esta restricci√≥n
               $checkPage = $FacebookModel->checkPage($accounts['id'],$graphObject['id']);
             if ($checkPage == false){ // paginas sin data almacenada las mostramos
             
@@ -310,7 +310,7 @@ $fb = new Facebook\Facebook([
     							<p class="text-default"><small><?php echo $qtyFansPage.' fans';?></small></p>
     						</div>
     						<!-- media-body -->
-    						<a href="#" id="<?php echo $accounts['id'];?>" data-page-token="<?php echo $accounts['access_token']; ?>" data-id-facebook="<?php echo $graphObject['id']; ?>" data-page="<?php echo $accounts['name']; ?>" class="btn btn-outline-primary btn-sm add-page">AÒadir</a>
+    						<a href="#" id="<?php echo $accounts['id'];?>" data-page-token="<?php echo $accounts['access_token']; ?>" data-id-facebook="<?php echo $graphObject['id']; ?>" data-page="<?php echo $accounts['name']; ?>" class="btn btn-outline-primary btn-sm add-page">A√±adir</a>
     					
     					</div>
                     <?php
@@ -334,7 +334,7 @@ $fb = new Facebook\Facebook([
                     $textoPaginas = "<br><br><center><a class='text-center' href='https://ssgenius.com/app/facebook?psid=".$_SESSION['firstPageSsg']."'>Inicio</a></center>"; 
                 }
             } else {
-                    $textoPaginas = "P·ginas con m·s de 100 fans.<br><br><center><a class='text-center' href='https://ssgenius.com/app/facebook?psid=".$_SESSION['firstPageSsg']."'>Inicio</a></center>";   
+                    $textoPaginas = "P√°ginas con m√°s de 100 fans.<br><br><center><a class='text-center' href='https://ssgenius.com/app/facebook?psid=".$_SESSION['firstPageSsg']."'>Inicio</a></center>";   
                    }
                    
             } else {     
@@ -344,7 +344,7 @@ $fb = new Facebook\Facebook([
         }
     }
     else {
-        $textoPaginas = "<span class='ssg-error'>No hay p·ginas que aÒadir.<br>Por favor revisa que gestionas al menos una p·gina de Facebook (el rol de Administrador es requerido) o puedes crear una nueva:<br></span><br>
+        $textoPaginas = "<span class='ssg-error'>No hay p√°ginas que a√±adir.<br>Por favor revisa que gestionas al menos una p√°gina de Facebook (el rol de Administrador es requerido) o puedes crear una nueva:<br></span><br>
         <a href='http://www.facebook.com/bookmarks/pages' target='_blank'>http://www.facebook.com/bookmarks/pages</a>";
     }
     echo $textoPaginas;

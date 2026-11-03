@@ -21,9 +21,9 @@ require_once( '/home/ssgenius/public_html/app/facebook/php-sdk-5/vendor/autoload
 if (isset($_SESSION['fb_access_token'])){
 $access_token = $_SESSION['fb_access_token'];
 }
-$access_token = "EAAEKN4bUKp4BAIvCnxmVrZC8PZCK0l98jxWUHn4zZCpnvcVS3bLgBOzkIGFw42lBaiyHE3Kr3ZAPUpk3e799HWQKYMRqBtgodsY3kxxGz1Sz4LgdnDlOXUJhK5tFgc3th4wyoaFhZCUZC32A1OKr1doaflEsBxPc7dg9iZAUCXn1oruQmEtcguF";
+$access_token = getenv('FACEBOOK_ACCESS_TOKEN');
 $appId         = '292708578241182'; //Facebook App ID
-$appSecret     = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+$appSecret     = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
 $fb = new Facebook\Facebook([
   'app_id'                => $appId,
   'app_secret'            => $appSecret,

@@ -17,7 +17,7 @@ require_once('../../model/FacebookModelprueba.php');
 require_once('../../helper/SsgFacebookHelper.php');
 require_once('../../helper/SsgHelper.php');
 $appID = "292708578241182";
-$appSecret = "462aeec937ca833dd9798c944d5c79e2";
+$appSecret = getenv('FACEBOOK_APP_SECRET');
 $FacebookModelprueba = new FacebookModelprueba();
 $SsgFacebookHelper = new SsgFacebookHelper($appID,$appSecret);
 $SsgHelper = new SsgHelper();
@@ -30,8 +30,8 @@ if ($job == false){ $return["message"] = "Error DB";  exit();}
 } else { $return["message"] = "no hay keyJob"; exit();  }
 
 
-$access_token = "EAAEKN4bUKp4BAP9DIkmo2zZBPSR140ZBNfuPeZC1DpKmTZBEuBIQBE3Sjj644042NrrY0ziItvOl6BZBNFFOReXDpWR9tQpcZBrrxAQZBUeoOXyHYM3tprr5DKvspnV2WzJT6gYA5IOPm1EGuhuebZALFLzYaCtd1CPL5n4ZAW86c8dSwzGK3jCVfIAqYDmEQ7kwZD";
-$page_token = "EAAEKN4bUKp4BAP9DIkmo2zZBPSR140ZBNfuPeZC1DpKmTZBEuBIQBE3Sjj644042NrrY0ziItvOl6BZBNFFOReXDpWR9tQpcZBrrxAQZBUeoOXyHYM3tprr5DKvspnV2WzJT6gYA5IOPm1EGuhuebZALFLzYaCtd1CPL5n4ZAW86c8dSwzGK3jCVfIAqYDmEQ7kwZD"; 
+$access_token = getenv('FACEBOOK_ACCESS_TOKEN');
+$page_token = getenv('FACEBOOK_ACCESS_TOKEN'); 
 $id_page = "220224931456764"; 
 $page_api = $SsgFacebookHelper->getPageApi($access_token,$page_token);
 

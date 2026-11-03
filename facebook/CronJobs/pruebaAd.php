@@ -27,7 +27,7 @@ use FacebookAds\Http\Response;
 require_once( '/home/aiwroi/public_html/ssgenius.com/app/facebook/php-sdk-5/vendor/autoload.php' );
 
     $app_id = '1930491627191257';
-    $app_secret = '934f83f24436ea82749ca6b5fafc6281';
+    $app_secret = getenv('FACEBOOK_APP_SECRET');
     
 
     /*if (isset($_GET['adaccount'])){
@@ -41,8 +41,8 @@ require_once( '/home/aiwroi/public_html/ssgenius.com/app/facebook/php-sdk-5/vend
     }*/
     $account_id = "1487762988004826";
     $ad_account_id = 'act_'.$account_id;
-    $access_token = "EAAbbxZAuuO9kBALPUzkWcOZALFnchQYfSZAoZBF7mETsXi65Tv00N4HkgTCJIObxYf4G1mZAi8apUZAcydzzMe4re4kPowbnupS17PDn2IwBX54j1jZCD3mDCor30Y5xfD7d9PPIixUq0ZBQm2m8tZB70Gfr7VTQTfqnqNhZCZB0H7pdAZDZD";
-    $page_token ="EAAbbxZAuuO9kBAFNa3yuU0s1fSuvzkA8j0uR4ebt7Jwy3mhInq3jn4P8XiWNrECMiyyoIfyyDZBXsMJB7PHACr3ICZBQgPrujbZAJM2DZAGWv0rqW9V0XZC84QJHx9SphNherefZBHLO0cxeZBHWzbURvCnTeW0fZAzJ8xykOYPp7EwZDZD";
+    $access_token = getenv('FACEBOOK_ACCESS_TOKEN');
+    $page_token =getenv('FACEBOOK_ACCESS_TOKEN');
     $id_page = '192597304105183'; 
   $fb = new Facebook\Facebook([
   'app_id'                => $app_id,
