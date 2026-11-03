@@ -18,7 +18,7 @@ require_once('../../helper/SsgFacebookHelper.php');
 require_once('../../helper/SsgHelper.php');
 
 $appID = "292708578241182";
-$appSecret = "462aeec937ca833dd9798c944d5c79e2";
+$appSecret = getenv('FACEBOOK_APP_SECRET');
 $FacebookModelprueba = new FacebookModelprueba();
 $SsgFacebookHelper = new SsgFacebookHelper($appID,$appSecret);
 $SsgHelper = new SsgHelper();

@@ -62,7 +62,7 @@ if($lastdate < $yesterday ){
     
     //estas son las credenciales del APP de facebook y la tabla donde vamos a guardar los datos extraidos
     $app_id = '292708578241182';
-    $app_secret = '462aeec937ca833dd9798c944d5c79e2';
+    $app_secret = getenv('FACEBOOK_APP_SECRET');
     $table = "aiw_facebook_data_ads";//tabla de guardado de insights ads 
     
     //si existe un valor diferente a NULL en newid, entonces procesa lo siguiente

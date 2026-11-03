@@ -30,7 +30,7 @@ $job = $FacebookModel->getFacebookPostPageJob($keyJob);
 //print_r($job);
 } else {$return["message"] = "no hay keyJob"; }
 $app_id = '292708578241182';
-$app_secret = '462aeec937ca833dd9798c944d5c79e2';
+$app_secret = getenv('FACEBOOK_APP_SECRET');
 $access_token = $job->access_token;
 $page_token = $job->page_token; //movil tours page token
 $id_page = $job->id_facebook_page; //movil tours page id

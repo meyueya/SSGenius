@@ -33,7 +33,7 @@ $access_token = $_SESSION['fb_access_token'];
     }
     // Instantiates a new Facebook super-class object from SDK Facebook\Facebook
     $appId = '292708578241182'; //Facebook App ID
-    $appSecret = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+    $appSecret = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
          $fb = new Facebook\Facebook([
           'app_id' => $appId,
           'app_secret' => $appSecret,

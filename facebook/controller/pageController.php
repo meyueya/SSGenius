@@ -25,7 +25,7 @@ $access_token = $_SESSION['fb_access_token'];
     if (!isset($access_token)){ header('Location: https://ssgenius.com/app/facebook/login'); }
     // Instantiates a new Facebook super-class object from SDK Facebook\Facebook
     $appId         = '292708578241182'; //Facebook App ID
-    $appSecret     = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+    $appSecret     = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
     try{
     $api = Api::init($appId, $appSecret, $access_token);
     $api->setLogger(new CurlLogger());

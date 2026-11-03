@@ -24,7 +24,7 @@ if (isset($_SESSION['fb_access_token'])){
 $access_token = $_SESSION['fb_access_token'];
 }
 $appId         = '292708578241182'; //Facebook App ID
-$appSecret     = '462aeec937ca833dd9798c944d5c79e2'; //Facebook App Secret
+$appSecret     = getenv('FACEBOOK_APP_SECRET'); //Facebook App Secret
 $redirectURL   = 'https://ssgenius.com/app/facebook/login/fb-callback.php'; //Callback URL
 //permisos en cola 'user_link','ads_management','ads_read','publish_pages','business_management','read_page_mailboxes'
 $permissions = array('ads_read'); // permissions
